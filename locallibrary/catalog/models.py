@@ -1,8 +1,8 @@
 from django.db import models
 from django.urls import reverse # Used in get_absolute_url() to get URL for specified ID
-
 from django.db.models import UniqueConstraint # Constrains fields to unique values
 from django.db.models.functions import Lower # Returns lower cased value of field
+import uuid # Required for unique book instances
 
 class Genre(models.Model):
     """Model representing a book genre."""
@@ -27,8 +27,7 @@ class Genre(models.Model):
                 name='genre_name_case_insensitive_unique',
                 violation_error_message = "Genre already exists (case insensitive match)"
             ),
-        ]
-        
+        ]   
         
 class Book(models.Model):
     """Model representing a book (but not a specific copy of a book)."""
@@ -56,8 +55,6 @@ class Book(models.Model):
     def get_absolute_url(self):
         """Returns the URL to access a detail record for this book."""
         return reverse('book-detail', args=[str(self.id)])
-    
-import uuid # Required for unique book instances
 
 class BookInstance(models.Model):
 
@@ -107,3 +104,21 @@ class Author(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.last_name}, {self.first_name}'
+
+class Language(models.Model):
+    """Model representing a language."""
+    name = models.CharField(max_length=100)
+    creator = models.CharField(max_length=100)
+    first_appeared = models.DateField(null=True, blank=True)
+    latest_version = models.CharField(max_length=50, null=True, blank=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def get_absolute_url(self):
+        """Returns the URL to access a particular language instance."""
+        return reverse('language-detail', args=[str(self.id)])
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
