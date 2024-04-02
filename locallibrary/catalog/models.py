@@ -3,6 +3,7 @@ from django.urls import reverse # Used in get_absolute_url() to get URL for spec
 from django.db.models import UniqueConstraint # Constrains fields to unique values
 from django.db.models.functions import Lower # Returns lower cased value of field
 import uuid # Required for unique book instances
+from django.urls import reverse 
 
 class Genre(models.Model):
     """Model representing a book genre."""
@@ -106,19 +107,15 @@ class Author(models.Model):
         return f'{self.last_name}, {self.first_name}'
 
 class Language(models.Model):
-    """Model representing a language."""
-    name = models.CharField(max_length=100)
-    creator = models.CharField(max_length=100)
-    first_appeared = models.DateField(null=True, blank=True)
-    latest_version = models.CharField(max_length=50, null=True, blank=True)
-
-    class Meta:
-        ordering = ['name']
+    """Model representing a Language (e.g. English, French, Japanese, etc.)"""
+    name = models.CharField(max_length=200,
+                            unique=True,
+                            help_text="Enter the book's natural language (e.g. English, French, Japanese etc.)")
 
     def get_absolute_url(self):
-        """Returns the URL to access a particular language instance."""
+        """Returns the url to access a particular language instance."""
         return reverse('language-detail', args=[str(self.id)])
 
     def __str__(self):
-        """String for representing the Model object."""
+        """String for representing the Model object (in Admin site etc.)"""
         return self.name

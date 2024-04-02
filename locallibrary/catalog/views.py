@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from .models import Book, Author, BookInstance, Genre
+from django.views import generic
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 def index(request):
     """View function for home page of site."""
@@ -28,3 +32,46 @@ def index(request):
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+
+class BookListView(generic.ListView):
+    model = Book
+    paginate_by = 10
+
+class BookDetailView(generic.DetailView):
+    model = Book
+
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 10
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
+
+
+class GenreDetailView(generic.DetailView):
+    model = Genre
+
+class GenreListView(generic.ListView):
+    model = Genre
+    paginate_by = 10
+
+# class LanguageDetailView(generic.DetailView):
+#    """Generic class-based detail view for a genre."""
+#    model = Language
+
+#class LanguageListView(generic.ListView):
+#    """Generic class-based list view for a list of genres."""
+#    model = Language
+#    paginate_by = 10
+
+class BookInstanceListView(generic.ListView):
+    model = BookInstance
+    paginate_by = 10
+
+class BookInstanceDetailView(generic.DetailView):
+    model = BookInstance
+
+
+
+
+
