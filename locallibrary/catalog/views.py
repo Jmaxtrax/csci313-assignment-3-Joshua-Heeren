@@ -200,55 +200,46 @@ class BookDelete(PermissionRequiredMixin, DeleteView):
                 reverse("book-delete", kwargs={"pk": self.object.pk})
             )
 
-
 class GenreCreate(PermissionRequiredMixin, CreateView):
     model = Genre
     fields = ['name', ]
     permission_required = 'catalog.add_genre'
-
 
 class GenreUpdate(PermissionRequiredMixin, UpdateView):
     model = Genre
     fields = ['name', ]
     permission_required = 'catalog.change_genre'
 
-
 class GenreDelete(PermissionRequiredMixin, DeleteView):
     model = Genre
     success_url = reverse_lazy('genres')
     permission_required = 'catalog.delete_genre'
-
 
 class LanguageCreate(PermissionRequiredMixin, CreateView):
     model = Language
     fields = ['name', ]
     permission_required = 'catalog.add_language'
 
-
 class LanguageUpdate(PermissionRequiredMixin, UpdateView):
     model = Language
     fields = ['name', ]
     permission_required = 'catalog.change_language'
-
 
 class LanguageDelete(PermissionRequiredMixin, DeleteView):
     model = Language
     success_url = reverse_lazy('languages')
     permission_required = 'catalog.delete_language'
 
-
 class BookInstanceCreate(PermissionRequiredMixin, CreateView):
     model = BookInstance
     fields = ['book', 'imprint', 'due_back', 'borrower', 'status']
     permission_required = 'catalog.add_bookinstance'
-
 
 class BookInstanceUpdate(PermissionRequiredMixin, UpdateView):
     model = BookInstance
     # fields = "__all__"
     fields = ['imprint', 'due_back', 'borrower', 'status']
     permission_required = 'catalog.change_bookinstance'
-
 
 class BookInstanceDelete(PermissionRequiredMixin, DeleteView):
     model = BookInstance
