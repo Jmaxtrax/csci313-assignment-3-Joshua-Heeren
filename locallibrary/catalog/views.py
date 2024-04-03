@@ -60,7 +60,6 @@ class AuthorListView(generic.ListView):
 class AuthorDetailView(generic.DetailView):
     model = Author
 
-
 class GenreDetailView(generic.DetailView):
     model = Genre
 

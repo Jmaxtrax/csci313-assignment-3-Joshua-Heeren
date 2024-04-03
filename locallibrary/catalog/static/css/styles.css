@@ -1,15 +1,95 @@
+/* Sidebar Styles */
 .sidebar-nav {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 0;
     list-style: none;
-  }
+}
 
-  #logout-form {
+#logout-form {
     display: inline;
-  }
-  #logout-form button {
+}
+
+#logout-form button {
     padding: 0;
     margin: 0;
-  }
+}
 
-  
+.col-sm-2 {
+    border-right: 1px solid #332e2e;
+}
+
+.sidebar-nav li {
+    margin-bottom: 10px;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+.sidebar-nav a:hover {
+    color: #007bff;
+}
+
+/* Content Styles */
+.container-fluid {
+    margin-top: 0px;
+}
+
+.pagination {
+    margin-top: 10px;
+}
+
+.page-links {
+    display: inline-block;
+}
+
+.page-links a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.page-links a:hover {
+    color: #007bff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main {
+    background-size: cover; 
+    background-attachment: scroll;
+    background-position: center top;
+    background-repeat: repeat;
+}
+
+h1, h2, p {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.card {
+    opacity: 90%;
+    margin-top: 20px;
+    min-height: 420px;
+    width: 500px;
+    display: flex;
+}
+
+.indexList {
+    text-align: center;
+}
